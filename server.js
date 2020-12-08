@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to localhost or atlas URI defined in heroku
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://joolyen2377:<password>@clusterjohnson.mgfl3.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -22,6 +22,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://joolyen2377:<password
 app.use(require("./routes/html-routes.js"))
 app.use(require("./routes/api-routes.js"))
 
-app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
-});
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
