@@ -1,5 +1,4 @@
 const mongoose = require("mongoose"); 
-
 const Schema = mongoose.Schema; 
 
 // workout schema defined
@@ -53,5 +52,5 @@ WorkoutSchema.virtual("totalDuration").get(function(){
     return sumTotal;
 });
 
-const Workout = mongoose.model("Workout", WorkoutSchema);
-module.exports = Workout;
+const workout = mongoose.model("workout", WorkoutSchema);
+module.exports = workout;
